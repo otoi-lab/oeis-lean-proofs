@@ -6,3 +6,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: leanprover/lean-action@v1
+      - name: Kernel replay with leanchecker
+        run: lake env leanchecker OeisProofs.FC.A8578 OeisProofs.FC.A400194 OeisProofs.FC.A384222

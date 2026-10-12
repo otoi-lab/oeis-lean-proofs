@@ -44,12 +44,18 @@ Because this map reverses the order of the divisors, the row of sublist lengths 
 * **A008578.** `σ` is submultiplicative, and `σ(k) < k·P` for the largest prime factor `P` of `k`.
   If `P + 2 ≤ Ω(k)`, this gives `σ(k) ≤ k·Ω(k)` at once. Otherwise write `k = P·m` and use induction on `m`.
 
-## Build
+## Build and checks
 
 ```
 lake exe cache get
 lake build
+lake env leanchecker OeisProofs.FC.A8578 OeisProofs.FC.A400194 OeisProofs.FC.A384222
 ```
+
+`lake build` includes `OeisProofs/AxiomAudit.lean`. It runs `#print axioms` on the four theorems
+in `OeisProofs/FC/` and fails if any axiom other than `propext`, `Classical.choice` and
+`Quot.sound` appears. `leanchecker` (shipped with Lean) replays the declarations of
+`OeisProofs/FC/` in the kernel. CI runs all three commands.
 
 The project pins Lean `v4.33.1` and the Mathlib revision used by
 [formal-conjectures](https://github.com/google-deepmind/formal-conjectures).
