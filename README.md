@@ -11,6 +11,21 @@ Each main theorem depends only on the standard axioms `propext`, `Classical.choi
 | [A384222](https://oeis.org/A384222) | Pol (2026): `T(n,k) = A384225(n,k) · A001511(n)` | `OeisProofs.TwoDense.card_block` |
 | [A384222](https://oeis.org/A384222) | Pol (2025), Conjecture 1: each row is palindromic | `OeisProofs.TwoDense.block_div`, `card_block_div` |
 
+## Statements of formal-conjectures
+
+`OeisProofs/FC/` restates the conjectures exactly as in the
+[formal-conjectures](https://github.com/google-deepmind/formal-conjectures) files
+`FormalConjectures/OEIS/8578.lean`, `400194.lean` and `384222.lean`, and proves them.
+These files use the OEIS definition directly: the increasing list of divisors is split with
+`List.splitBy` between consecutive divisors `d < d'` with `d' > 2 * d`.
+
+| Statement | Lean theorem |
+|---|---|
+| A008578 | `OeisA8578.conjecture` |
+| A400194 | `OeisA400194.conjecture` |
+| A384222, Conjecture 1 | `OeisA384222.conjecture_1` |
+| A384222, formula of T(n,k) | `OeisA384222.conjecture_formula` |
+
 ## Definitions
 
 A *2-dense sublist* of the divisors of `n` is a maximal run of consecutive divisors in which each
